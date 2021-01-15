@@ -8,9 +8,7 @@ class App extends Component {
     input:''
   }
   addTask = (event) => {
-    
     this.setState({ input: event.target.value})
-    
   }
 
   handleSubmit = (event) => {
@@ -19,23 +17,21 @@ class App extends Component {
       tasks: [...this.state.tasks, this.state.input]
     })
   }
-  // changeHandler = event => {
-  //   this.setState({input: event.target.value})
-  // }
- removeTaskHandler = index => {
+
+ removeHandler = index => {
    let storedTasks = [...this.state.tasks]
    storedTasks.splice(index, 1)
    this.setState({ tasks: storedTasks})
- }
- changeHandler = event => {
-   this.setState({ input: event.target.value })
  }
 
   render() {
   return (
     <div className="App">
      <h2>add task</h2>
-     <Card tasks={this.state.tasks}/>
+     <Card 
+      removeHandler={this.removeHandler}
+      tasks={this.state.tasks}
+      />
      <div>
        <form onSubmit={this.handleSubmit}>
          <input 
@@ -52,21 +48,10 @@ class App extends Component {
   );
   }
 }
-// const SubmitTask = () => {
-//   return (
-//     <form onSubmit={() => addTaskInput(e)}>
-//     <input 
-//       type='text'
-//       placeholder='enter item'
-//       value={this.state.input}
-//       onChange={(e) => this.setState({item: e.target.value})}
-//     />
-//     </form>
-//   )
-// }
+
 const Card = (props) => {
   const todoList = props.tasks.map((todo, index) => {
-    return <Todo content={todo} index={index} />
+    return <Todo  content={todo} index={index} delete={props.removeHandler} />
   })
   return (
     <div>
@@ -83,8 +68,10 @@ const Todo = (props) => {
       <p>
         {props.index}
       </p>
-      <button>delete?</button>
+      <button onClick={() => {props.delete(props.index)}}>delete?</button>
     </div>
   )
 }
+
+
 export default App;
