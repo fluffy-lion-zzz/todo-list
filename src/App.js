@@ -1,77 +1,76 @@
-import React, { Component } from 'react'
+//      (ノಠ益ಠ)ノ彡┻━┻
+//    (ノಠ益ಠ)ノ彡┻━┻
+//  (ノಠ益ಠ)ノ彡┻━┻
+// dont for npm install!!!
+
+import React, { useState } from 'react'
 import './App.css';
 
-class App extends Component {
+const App = () => {
+const [tasks, setTasks] = useState(["task1", "task2"])
+const [input, setInput] = useState("")
 
-  state ={
-    tasks: ["task 1", "task 2"],
-    input:''
-  }
-  addTask = (event) => {
-    this.setState({ input: event.target.value})
-  }
-
-  handleSubmit = (event) => {
+ const handleSubmit = (event) => {
     event.preventDefault()
-    this.setState({
-      tasks: [...this.state.tasks, this.state.input]
-    })
+    setTasks([...tasks, input])
+    
+    setInput("")
+    console.log(tasks)
   }
 
- removeHandler = index => {
-   let storedTasks = [...this.state.tasks]
+ const removeHandler = index => {
+   console.log(index)
+   let storedTasks = [...tasks]
    storedTasks.splice(index, 1)
-   this.setState({ tasks: storedTasks})
+   console.log(storedTasks)
+   setTasks(storedTasks)
  }
+ 
 
-  render() {
   return (
     <div className="App">
      <h2>add task</h2>
      <Card 
-      removeHandler={this.removeHandler}
-      tasks={this.state.tasks}
+      tasks={tasks}
+      removeHandler={removeHandler}
       />
      <div>
-       <form onSubmit={this.handleSubmit}>
+       <form onSubmit={handleSubmit}>
          <input 
           type="text" 
-          onChange={this.addTask}
-          value={this.state.input}
+          value={input}
+          onChange={(event) => {
+            setInput(event.target.value)
+          }}
           >
           </input>
-         <p>{this.state.input}</p>
+         <p>{input}</p>
          <button >submit</button>
        </form>
      </div>
     </div>
   );
   }
-}
 
 const Card = (props) => {
-  const todoList = props.tasks.map((todo, index) => {
-    return <Todo  content={todo} index={index} delete={props.removeHandler} />
+  const taskList = props.tasks.map((task, index) => {
+    return <Todo task={task} key={index} index={index} removeHandler={props.removeHandler} />
+    
   })
-  return (
-    <div>
-      {todoList}
-    </div>
-  )
-}
-const Todo = (props) => {
-  return(
-    <div>
-      <p>
-      {props.content}
-      </p>
-      <p>
-        {props.index}
-      </p>
-      <button onClick={() => {props.delete(props.index)}}>delete?</button>
-    </div>
-  )
+return (
+  <div>
+    {props.tasks && taskList}
+  </div>
+)
 }
 
+const Todo = (props) => {
+  return (
+    <div>
+      <p>{props.task}</p>
+      <button onClick={() => props.removeHandler(props.index)}>delete</button>
+    </div>
+  )
+}
 
 export default App;
