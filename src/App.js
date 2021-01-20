@@ -13,7 +13,6 @@ const [input, setInput] = useState("")
  const handleSubmit = (event) => {
     event.preventDefault()
     setTasks([...tasks, input])
-    
     setInput("")
     console.log(tasks)
   }
