@@ -8,7 +8,7 @@ const Card = (props) => {
       
     })
   return (
-    <div>
+    <div className="taskList">
       {props.tasks && taskList}
     </div>
   )

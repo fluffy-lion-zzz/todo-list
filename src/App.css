@@ -5,9 +5,9 @@
 .todoHeader {
   border: 1px solid red;
 }
-.cardComponent {
+/* .cardComponent {
   border: 2px solid purple;
-}
+} */
 .userInput {
   border: solid 5px orange;
 }

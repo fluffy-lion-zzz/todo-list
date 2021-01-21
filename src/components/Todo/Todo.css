@@ -1,3 +1,9 @@
-div {
-    background-color: beige;
+.taskWrapper{
+    border: solid 3px teal;
+}
+.taskDisplay {
+    border: solid 3px skyblue;
+}
+.buttonWrapper{
+    border: solid 3px sienna;
 }

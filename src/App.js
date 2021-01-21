@@ -33,12 +33,12 @@ const [input, setInput] = useState("")
       <div className="todoHeader">
         <h2>to-do list</h2>
       </div>
-      <div className="cardComponent">
+      <>
         <Card 
           tasks={tasks}
           removeHandler={removeHandler}
           />
-      </div>
+      </>
       <div className="userInput">
         <form onSubmit={handleSubmit}>
           <input 
