@@ -30,25 +30,34 @@ const [input, setInput] = useState("")
 
   return (
     <div className="App">
-     <h2>add task</h2>
-     <Card 
-      tasks={tasks}
-      removeHandler={removeHandler}
-      />
-     <div>
-       <form onSubmit={handleSubmit}>
-         <input 
-          type="text" 
-          value={input}
-          onChange={(event) => {
-            setInput(event.target.value)
-          }}
-          >
-          </input>
-         <p>{input}</p>
-         <button >submit</button>
-       </form>
-     </div>
+      <div className="todoHeader">
+        <h2>to-do list</h2>
+      </div>
+      <div className="cardComponent">
+        <Card 
+          tasks={tasks}
+          removeHandler={removeHandler}
+          />
+      </div>
+      <div className="userInput">
+        <form onSubmit={handleSubmit}>
+          <input 
+            className="inputBox"
+            type="text" 
+            value={input}
+            onChange={(event) => {
+              setInput(event.target.value)
+            }}
+            >
+            </input>
+            {/* <div>
+              <p>{input}</p>
+            </div> */}
+            <div className="submitWrapper">
+              <button >submit</button>
+            </div>
+        </form>
+      </div>
     </div>
   );
   }
