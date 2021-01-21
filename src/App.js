@@ -4,6 +4,8 @@
 // dont for npm install!!!
 
 import React, { useState } from 'react'
+import Card from './components/Card/Card'
+
 import './App.css';
 
 const App = () => {
@@ -51,25 +53,8 @@ const [input, setInput] = useState("")
   );
   }
 
-const Card = (props) => {
-  const taskList = props.tasks.map((task, index) => {
-    return <Todo task={task} key={index} index={index} removeHandler={props.removeHandler} />
-    
-  })
-return (
-  <div>
-    {props.tasks && taskList}
-  </div>
-)
-}
 
-const Todo = (props) => {
-  return (
-    <div>
-      <p>{props.task}</p>
-      <button onClick={() => props.removeHandler(props.index)}>delete</button>
-    </div>
-  )
-}
+
+
 
 export default App;
