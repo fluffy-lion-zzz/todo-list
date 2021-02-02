@@ -3,10 +3,15 @@
 //  (ノಠ益ಠ)ノ彡┻━┻
 // dont for npm install!!!
 
+
+///anime js!!!!!!!
+
 import React, { useState } from 'react'
 import Card from './components/Card/Card'
 
 import './App.css';
+import anime from 'animejs'
+import Anime from 'react-anime'
 
 const App = () => {
 const [tasks, setTasks] = useState(["task1", "task2"])
@@ -25,7 +30,32 @@ const [input, setInput] = useState("")
    storedTasks.splice(index, 1)
    console.log(storedTasks)
    setTasks(storedTasks)
+
  }
+ let animate =()=>{ 
+  //  anime({
+  // targets: '.taskWrapper',
+  // translateX: 250,
+  // easing: 'easeInOutSine'
+  // })
+  anime({
+    targets:'.submitButton',
+    keyframes: [
+      // {translateY: 0},
+      {translateX: 250},
+      {translateY: 40},
+      {translateX: 0},
+      {translateY: 0}
+    ],
+    duration: 2000,
+    easing: 'easeOutElastic(1, .8)',
+    // backgroundColor: [
+    //   {value: '#FFF'}, // Or #FFFFFF
+    //   {value: 'CCFFCC'},
+    //   {value: 'E5FFCC'}
+    // ],
+  })
+}
  
 
   return (
@@ -34,10 +64,13 @@ const [input, setInput] = useState("")
         <h2>to-do list</h2>
       </div>
       <>
-        <Card 
-          tasks={tasks}
-          removeHandler={removeHandler}
-          />
+        
+          <Card 
+            tasks={tasks}
+            removeHandler={removeHandler}
+            animate={animate}
+            />
+        
       </>
       <div className="userInput">
         <form onSubmit={handleSubmit}>
@@ -54,7 +87,7 @@ const [input, setInput] = useState("")
               <p>{input}</p>
             </div> */}
             <div className="submitWrapper">
-              <button >submit</button>
+              <button className="submitButton"onClick={animate}>submit</button>
             </div>
         </form>
       </div>
