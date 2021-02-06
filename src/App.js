@@ -11,7 +11,7 @@ import Card from './components/Card/Card'
 
 import './App.css';
 import anime from 'animejs'
-import Anime from 'react-anime'
+// import Anime from 'react-anime'
 
 const App = () => {
 const [tasks, setTasks] = useState(["task1", "task2"])

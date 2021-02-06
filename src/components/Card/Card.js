@@ -1,6 +1,6 @@
 import React from 'react'
 import Todo from '../Todo/Todo'
-import anime from 'animejs'
+// import anime from 'animejs'
 import Anime from 'react-anime'
 
 

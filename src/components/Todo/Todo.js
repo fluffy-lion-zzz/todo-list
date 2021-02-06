@@ -1,14 +1,10 @@
 import React from 'react'
 import './Todo.css'
-import anime from 'animejs'
-import Anime from 'react-anime'
+
 
 const Todo = (props) => {
-  // let animate = anime({
-  //   targets: '.taskList',
-  //   translateX: 250,
-  //   easing: 'easeInOutSine'
-  //   })
+  
+console.log(props.key)
 const removeComb = (index) => {
   // props.animate()
   props.removeHandler(index)
